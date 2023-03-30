@@ -10,6 +10,7 @@ public class catchTheKiller extends Library{
     static List<Suspect> suspects = new ArrayList<>();
     static List<String> namesNotUsed = new ArrayList<>(Arrays.asList(getNames()));
     static Random random = new Random();
+    static Victim victim;
 
     public static String getRandomUniqueName() {
         String name = namesNotUsed.get(random.nextInt(namesNotUsed.size()));
@@ -22,7 +23,6 @@ public class catchTheKiller extends Library{
     }
 
     public static Victim whoWasKilled() {
-        Victim victim;
         int randomIndex1 = random.nextInt(getOccupation().length);
         int randomIndex2 = random.nextInt(getCausesOfDeath().length);
         victim = new Victim(getRandomUniqueName(), random.nextInt(95 - 16) + 16,
@@ -38,7 +38,7 @@ public class catchTheKiller extends Library{
         int randomIndex3 = random.nextInt(getMurderMotive().length);
         int randomIndex4 = random.nextInt(getSuspiciousCharacterTraits().length);
         killer = new Suspect(getRandomUniqueName(), random.nextInt(95 - 16) + 16, getOccupation()[randomIndex1],
-                getAlibi()[randomIndex2], false, evidence(true), true,
+                getAlibi()[randomIndex2], false, evidence(true, victim.getCauseOfDeath()), true,
                 getMurderMotive()[randomIndex3], getSuspiciousCharacterTraits()[randomIndex4]);
         return killer;
     }
@@ -50,7 +50,7 @@ public class catchTheKiller extends Library{
         int randomIndex2 = random.nextInt(getAlibi().length);
         int randomIndex3 = random.nextInt(getSuspiciousCharacterTraits().length);
         suspect = new Suspect(getRandomUniqueName(), random.nextInt(95 - 16) + 16, getOccupation()[randomIndex1],
-                getAlibi()[randomIndex2], true, evidence(false), false,
+                getAlibi()[randomIndex2], true, evidence(false, victim.getCauseOfDeath()), false,
                 null, getSuspiciousCharacterTraits()[randomIndex3]);
         suspects.add(suspect);
 
@@ -69,7 +69,7 @@ public class catchTheKiller extends Library{
         int randomIndex9 = random.nextInt(getAlibi().length);
         int randomIndex10 = random.nextInt(getPositiveCharacterTraits().length);
         suspect = new Suspect(getRandomUniqueName(), random.nextInt(95 - 16) + 16, getOccupation()[randomIndex8],
-                getAlibi()[randomIndex9], false, evidence(false), false,
+                getAlibi()[randomIndex9], false, evidence(false, victim.getCauseOfDeath()), false,
                 null, getPositiveCharacterTraits()[randomIndex10]);
         suspects.add(suspect);
 
