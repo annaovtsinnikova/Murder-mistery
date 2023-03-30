@@ -94,7 +94,7 @@ public class Library {
             "was shot dead",
             "got a drug overdose",
             "was hit by a car",
-            "fell or was pushed off the bridge was drowned in the river",
+            "fell or was pushed off the bridge and drowned in the river",
             "was drowned in the bath",
             "got stabbed",
             "was buried alive",
